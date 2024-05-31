@@ -4,9 +4,9 @@ import { Feather } from '@expo/vector-icons';
 import React from 'react';
 
 
-const ListItem = ({ item }) => (
+const HorizontalItem = ({ item }) => (
   <View style ={{marginLeft:21}}>
-    <View style={{ flexDirection: 'row', marginTop: 18, marginRight: 4}}>
+    <View style={{ flexDirection: 'row', marginTop: 2, marginRight: 4}}>
       <View style={{ backgroundColor: '#ffff', width: 160, height: 170, flexDirection: 'column', borderRadius: 15, paddingTop: 10, paddingLeft: 8 }}>
         <Text style={{ fontSize: 15, fontWeight: 'bold', }}> {item.text} </Text>
         <Text style={{ fontSize: 11 }}> {item.tasks} </Text>
@@ -16,12 +16,12 @@ const ListItem = ({ item }) => (
   </View>
 );
 
-const Section = ({ title, data }) => (
+const HorizontalSection = ({ title, data }) => (
   <View>
     <Text style={styles.sectionHeader}>{title}</Text>
     <FlatList
       horizontal data={data}
-      renderItem={({ item }) => <ListItem item={item} />}
+      renderItem={({ item }) => <HorizontalItem item={item} />}
       showsHorizontalScrollIndicator={false}
       keyExtractor={(item) => item.key}
       contentContainerStyle={styles.flatList}
@@ -29,8 +29,26 @@ const Section = ({ title, data }) => (
   </View>
 );
 
+const VerticalItem = ({ item }) => (
+  <View>
+    <View style={{backgroundColor:'#ffff', width:340, height:120, borderWidth:1, borderColor:'#e8d1ba', borderRadius: 15, flexDirection:'column', justifyContent:'center', marginBottom:14, marginLeft:20, marginRight:20 }}>
+      <Text style={{paddingLeft:12, fontWeight:'bold', fontSize:15}}>{item.text}</Text>
+    </View>
+  </View>
+  
+);
 
-
+const VerticalSection = ({ title, data }) => (
+  <View>
+    <Text style={styles.sectionHeader}>{title}</Text>
+    <FlatList
+      data={data}
+      renderItem={({ item }) => <VerticalItem item={item} />}
+      keyExtractor={(item) => item.key}
+      contentContainerStyle={styles.verticalList}
+    />
+  </View>
+);
 
 const HORIZONTAL = [{
   title: 'Categories',
@@ -94,6 +112,56 @@ const HORIZONTAL = [{
 },
 ];
 
+const VERTICAL = [{
+  title: 'Ongoing Task',
+  data: [
+    { key: '1',
+      text: 'Mobile App Development'
+    },
+    { key: '2',
+      text: 'Web Development'
+    },
+    { key: '3',
+    text: 'Push Ups'
+    },
+    { key: '4',
+    text: 'Software Engineering Project'
+    },
+    { key: '5',
+    text: 'Database Structures'
+    },
+    { key: '6',
+    text: 'Premilinary Analysis'
+    },  
+    { key: '7',
+    text: 'Numerical and Computational Methods'
+    },
+    { key: '8',
+    text: 'Amazon Project'
+    },
+    { key: '9',
+    text: 'Schedule Planning Session'
+    },
+    { key: '10',
+    text: 'Morning Sit Ups'
+    },
+    { key: '11',
+    text: 'Wall Pilates'
+    },
+    { key: '12',
+    text: 'CCI Coding Practice'
+    },
+    { key: '13',
+    text: 'Self Help Book Reading'
+    },
+    { key: '14',
+    text: 'Quizzes Preparation'
+    },
+    { key: '15',
+    text: 'Documentation Course'
+    },
+    ],
+}];
 
 
 
@@ -102,7 +170,9 @@ export default function App() {
     <SafeAreaView style={{ flex: 1 }}>
     
       <View style={styles.container}>
+      
       <ScrollView style={{flex:1}}>
+
         <Text style={{ alignSelf: 'flex-start', marginTop: 50, marginLeft: 20, fontSize: 32, fontWeight: 700, lineHeight: 38.4 }}>Hello , Devs</Text>
         <Text style={{ alignSelf: 'flex-start', marginLeft: 20, fontSize: 12 }}>14 tasks today</Text>
 
@@ -117,18 +187,22 @@ export default function App() {
             <TextInput placeholder='Search' />
           </View>
 
-          <View style={{ marginTop: 40, }}>
+          <View style={{ marginTop: 40}}>
             <Feather name="sliders" size={34} color="white" style={{ backgroundColor: '#ff5349', alignSelf: 'flex-end', padding: 9, borderRadius: 15, marginTop: -3, transform: [{ rotate: "90deg" }] }} />
           </View>
 
         </View>
-      
-      {HORIZONTAL.map((category, index) => (
-          <Section key={index} title={category.title} data={category.data} />
+        
+        {HORIZONTAL.map((category, index) => (
+            <HorizontalSection key={index} title={category.title} data={category.data} />
         ))}
-        </ScrollView>
 
+        {VERTICAL.map((category, index) => (
+            <VerticalSection key={index} title={category.title} data={category.data} />
+          ))}
+      </ScrollView>
       </View> 
+
     </SafeAreaView>
 
   );
@@ -179,6 +253,7 @@ const styles = StyleSheet.create({
   searchrow: {
     flexDirection: 'row',
     marginLeft: 33,
+    marginBottom: -18,
   },
   horimage: {
     width: 123,
@@ -186,10 +261,11 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
   sectionHeader: {
-    marginTop: 40,
+    marginTop: 30,
     marginLeft: 22,
     fontSize: 18,
     fontWeight: 'bold',
+    marginBottom:12,
   },
 
 }
