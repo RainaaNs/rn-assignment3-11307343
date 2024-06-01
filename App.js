@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, StyleSheet, Text, View, Image, TextInput, ScrollView, FlatList} from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, Image, TextInput, ScrollView, FlatList } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import {React} from 'react';
+import { React } from 'react';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Lato_400Regular, Lato_700Bold } from '@expo-google-fonts/lato';
 
@@ -10,13 +10,13 @@ import { useFonts, Lato_400Regular, Lato_700Bold } from '@expo-google-fonts/lato
 
 const HorizontalItem = ({ item }) => (
   <View style={{ marginLeft: 21 }}>
-      <View style={{ flexDirection: 'row', marginTop: 2, marginRight: 4 }}>
-          <View style={{ backgroundColor: '#ffff', width: 170, height: 170, flexDirection: 'column', borderRadius: 15, paddingTop: 10, paddingLeft: 8 }}>
-              <Text style={{ fontSize: 16, fontFamily:'Lato_700Bold' }}> {item.text} </Text>
-              <Text style={{ fontSize: 12, fontFamily:'Lato_400Regular' }}> {item.tasks} </Text>
-              <Image source={item.uri} style={styles.horimage} />
-          </View>
+    <View style={{ flexDirection: 'row', marginTop: 2, marginRight: 4 }}>
+      <View style={{ backgroundColor: '#ffff', width: 170, height: 170, flexDirection: 'column', borderRadius: 15, paddingTop: 10, paddingLeft: 8 }}>
+        <Text style={{ fontSize: 16, fontFamily: 'Lato_700Bold' }}> {item.text} </Text>
+        <Text style={{ fontSize: 12, fontFamily: 'Lato_400Regular' }}> {item.tasks} </Text>
+        <Image source={item.uri} style={styles.horimage} />
       </View>
+    </View>
   </View>
 );
 
@@ -36,7 +36,7 @@ const HorizontalSection = ({ title, data }) => (
 const VerticalItem = ({ item }) => (
   <View>
     <View style={{ backgroundColor: '#ffff', width: 340, height: 120, borderWidth: 1, borderColor: '#e8d1ba', borderRadius: 15, flexDirection: 'column', justifyContent: 'center', marginBottom: 14, marginLeft: 20, marginRight: 20 }}>
-      <Text style={{ paddingLeft: 12, fontFamily:'Lato_700Bold', fontSize: 16 }}>{item.text}</Text>
+      <Text style={{ paddingLeft: 12, fontFamily: 'Lato_700Bold', fontSize: 16 }}>{item.text}</Text>
     </View>
   </View>
 
@@ -74,43 +74,43 @@ const HORIZONTAL = [{
       key: '3',
       text: 'Spiritual Study',
       tasks: '5 tasks',
-      uri: 'https://picsum.photos/id/1027/200',
+      uri: './assets/images/second.png',
     },
     {
       key: '4',
       text: 'Blogging',
       tasks: '8 tasks',
-      uri: 'https://picsum.photos/id/1035/200',
+      uri: './assets/images/second.png',
     },
     {
       key: '5',
       text: 'Cleaning',
       tasks: '10 tasks',
-      uri: 'https://picsum.photos/id/1038/200',
+      uri: './assets/images/second.png',
     },
     {
       key: '6',
       text: 'Code',
       tasks: '4 tasks',
-      uri: 'https://picsum.photos/id/1038/200',
+      uri: './assets/images/second.png',
     },
     {
       key: '7',
       text: 'Cook',
       tasks: '3 tasks',
-      uri: 'https://picsum.photos/id/1038/200',
+      uri: './assets/images/second.png',
     },
     {
       key: '8',
       text: 'Cleaning',
       tasks: '10 tasks',
-      uri: 'https://picsum.photos/id/1038/200',
+      uri: './assets/images/second.png',
     },
     {
       key: '9',
       text: 'Sleep',
       tasks: '1 task',
-      uri: 'https://picsum.photos/id/1038/200',
+      uri: './assets/images/second.png',
     },
   ],
 },
@@ -201,8 +201,8 @@ export default function App() {
 
         <ScrollView style={{ flex: 1 }}>
 
-          <Text style={{ alignSelf: 'flex-start', marginTop: 50, marginLeft: 20, fontSize: 32, fontFamily:'Lato_700Bold',  lineHeight: 38.4 }}>Hello , Devs</Text>
-          <Text style={{ alignSelf: 'flex-start', marginLeft: 20, fontSize: 12, fontFamily:'Lato_400Regular' }}>14 tasks today</Text>
+          <Text style={{ alignSelf: 'flex-start', marginTop: 50, marginLeft: 20, fontSize: 32, fontFamily: 'Lato_700Bold', lineHeight: 38.4 }}>Hello , Devs</Text>
+          <Text style={{ alignSelf: 'flex-start', marginLeft: 20, fontSize: 12, fontFamily: 'Lato_400Regular' }}>14 tasks today</Text>
 
           <View style={styles.profilebg}>
             <Image style={{ resizeMode: 'contain', width: 50, height: 50 }} source={require("./assets/images/image.png")} />
@@ -212,7 +212,7 @@ export default function App() {
 
             <View style={styles.searchbg}>
               <Feather name="search" size={24} color="black" style={styles.searchbutton} />
-              <TextInput style={{maxWidth:160, fontFamily: 'Lato_700Bold', fontSize:16}} placeholder='Search' />
+              <TextInput style={{ maxWidth: 160, fontFamily: 'Lato_700Bold', fontSize: 16 }} placeholder='Search' />
             </View>
 
             <View style={{ marginTop: 40 }}>
@@ -221,16 +221,16 @@ export default function App() {
 
           </View>
           <View>
-          {HORIZONTAL.map((category, index) => (
-            <HorizontalSection key={index} title={category.title} data={category.data} />
-          ))}
+            {HORIZONTAL.map((category, index) => (
+              <HorizontalSection key={index} title={category.title} data={category.data} />
+            ))}
           </View>
           <View>
-          {VERTICAL.map((category, index) => (
-            <VerticalSection key={index} title={category.title} data={category.data} />
-          ))}
+            {VERTICAL.map((category, index) => (
+              <VerticalSection key={index} title={category.title} data={category.data} />
+            ))}
           </View>
-          
+
         </ScrollView>
       </View>
 
@@ -296,7 +296,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: 'Lato_700Bold',
     marginBottom: 10,
-    paddingBottom:5
+    paddingBottom: 5
   },
   sectionHeader2: {
     marginTop: 25,
@@ -304,7 +304,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: 'Lato_700Bold',
     marginBottom: 10,
-    paddingBottom:10
+    paddingBottom: 10
   },
 }
 );
